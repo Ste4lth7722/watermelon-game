@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq8ugl0t04wo0"]
+
+[ext_resource type="Script" path="res://scenes/playing_scene/playing_scene_ui.gd" id="1_1ix6o"]
+[ext_resource type="Theme" uid="uid://b6k02yk4mj20q" path="res://themes/main_theme.tres" id="2_5vtxp"]
+[ext_resource type="Texture2D" uid="uid://cd4rci1tflfje" path="res://graphics/fruits/grape.png" id="2_apywl"]
+
+[node name="PlayingSceneUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ix6o")
+
+[node name="PointsLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -254.0
+offset_top = 12.0
+offset_right = -80.0
+offset_bottom = 76.0
+grow_horizontal = 0
+theme = ExtResource("2_5vtxp")
+text = "Score: 0"
+
+[node name="PauseButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 21.0
+offset_right = 228.0
+offset_bottom = 96.0
+theme = ExtResource("2_5vtxp")
+text = "Pause"
+
+[node name="DropIndicatorHolder" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 1280.0
+offset_top = -66.0
+offset_right = 1280.0
+offset_bottom = -66.0
+metadata/_edit_group_ = true
+
+[node name="DropIndicator" type="TextureRect" parent="DropIndicatorHolder"]
+modulate = Color(1, 1, 1, 0.196078)
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 52.0
+texture = ExtResource("2_apywl")
+expand_mode = 1
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

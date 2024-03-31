@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://d04ndfjl8hj0p"]
+
+[ext_resource type="PackedScene" uid="uid://c8pxyqovdsnuf" path="res://scenes/fruits/fruit_base.tscn" id="1_rjene"]
+[ext_resource type="Texture2D" uid="uid://c3xadnh3bjuy2" path="res://graphics/fruits/cantaloupe.png" id="2_0neyh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t8407"]
+radius = 82.0061
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4nu08"]
+radius = 82.0061
+
+[node name="Cantaloupe" groups=["cantaloupe"] instance=ExtResource("1_rjene")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -11)
+scale = Vector2(0.75, 0.750003)
+texture = ExtResource("2_0neyh")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_t8407")
+
+[node name="CollisionShape2D2" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_4nu08")

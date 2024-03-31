@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4fkb7m7smk0b"]
+
+[ext_resource type="Script" path="res://scenes/pause_menu.gd" id="1_2qjil"]
+[ext_resource type="Theme" uid="uid://b6k02yk4mj20q" path="res://themes/main_theme.tres" id="2_ksx3f"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2qjil")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.152941, 0.152941, 0.152941, 0.588235)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -28.5
+offset_top = 31.0
+offset_right = 28.5
+offset_bottom = 54.0
+grow_horizontal = 2
+theme = ExtResource("2_ksx3f")
+text = "Paused"
+
+[node name="UnpauseButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.5
+offset_top = -76.5
+offset_right = 134.5
+offset_bottom = -1.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ksx3f")
+text = "Unpause"
+
+[node name="MenuButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -217.5
+offset_top = 35.5
+offset_right = 217.5
+offset_bottom = 110.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ksx3f")
+text = "Return To Menu"
+
+[connection signal="pressed" from="UnpauseButton" to="." method="_on_unpause_button_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

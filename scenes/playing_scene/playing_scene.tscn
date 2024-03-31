@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6if05kcbqe64"]
+
+[ext_resource type="Script" path="res://scenes/playing_scene/playing_scene.gd" id="1_rbvdr"]
+[ext_resource type="Texture2D" uid="uid://crguumcrq7gjh" path="res://graphics/main_game_ui/fruit_container.png" id="2_lsrky"]
+
+[node name="PlayingScene" type="Node2D"]
+script = ExtResource("1_rbvdr")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(0, 560)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor"]
+position = Vector2(736, 504)
+polygon = PackedVector2Array(54, -794, 55, 295, 1032, 297, 1034, -794, 1493, -1165, 2144, -1675, 2109, -1687, 1492, -1193, 1007, -804, 1009, 277, 81, 277, 79, -805, -404, -1194, -935, -1627, -951, -1584, -404, -1165)
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+position = Vector2(1280, 57)
+scale = Vector2(3.70703, 2.99965)
+texture = ExtResource("2_lsrky")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(1743, 247)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(817, 250)

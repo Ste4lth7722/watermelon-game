@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmvkso51cv26b"]
+
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_ovpf4"]
+[ext_resource type="PackedScene" uid="uid://4k3v4h25wisu" path="res://scenes/main_menu.tscn" id="2_3liqp"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_ovpf4")
+
+[node name="SceneContainer" type="Node2D" parent="."]
+
+[node name="ControlContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2560.0
+offset_bottom = 1440.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" parent="ControlContainer" instance=ExtResource("2_3liqp")]
+layout_mode = 1

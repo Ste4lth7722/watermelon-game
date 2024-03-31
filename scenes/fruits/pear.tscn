@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2yajjblf1y3y"]
+
+[ext_resource type="Script" path="res://scenes/fruits/fruit_base.gd" id="1_7wfcj"]
+[ext_resource type="Texture2D" uid="uid://c2xe5nngnjoqh" path="res://graphics/fruits/pear.png" id="2_rmbuy"]
+
+[node name="Pear" type="RigidBody2D" groups=["pear"]]
+script = ExtResource("1_7wfcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -15)
+scale = Vector2(0.554688, 0.55469)
+texture = ExtResource("2_rmbuy")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(34, 38, 40, 26, 41, 18, 41, 5, 38, -7, 35, -10, 30, -16, 27, -22, 22, -33, 17, -46, 10, -52, 3, -53, -1, -51, -4, -51, -8, -52, -12, -50, -16, -46, -20, -41, -22, -34, -22, -28, -32, -12, -37, -4, -40, 4, -40, 14, -40, 25, -38, 31, -33, 37, -26, 45, -17, 49, -9, 52, -2, 53, 12, 53, 19, 50, 26, 46)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(1, -1)
+polygon = PackedVector2Array(16, -46, 9, -51, 2, -53, -2, -51, -5, -51, -9, -52, -13, -50, -21, -41, -24, -33, -24, -27, -39, -3, -42, 5, -42, 27, -39, 33, -28, 46, -7, 55, 5, 55, 14, 54, 26, 47, 34, 39, 40, 27, 41, 19, 41, 6, 38, -6, 30, -15, 26, -23, 21, -33)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy57jm7wyp8lr"]
+
+[ext_resource type="Script" path="res://scenes/fruits/fruit_base.gd" id="1_yb1je"]
+[ext_resource type="Texture2D" uid="uid://rqc4ksc26omp" path="res://graphics/fruits/apple.png" id="2_r622n"]
+
+[node name="Apple" type="RigidBody2D" groups=["apple"]]
+script = ExtResource("1_yb1je")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, -3)
+scale = Vector2(0.453125, 0.453127)
+texture = ExtResource("2_r622n")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(33, 13, 36, 2, 36, -11, 31, -26, 23, -35, 16, -37, -1, -37, -14, -37, -25, -34, -32, -27, -36, -19, -38, -9, -38, 6, -37, 15, -31, 26, -25, 34, -20, 38, -14, 41, -6, 41, -3, 39, 1, 39, 3, 41, 10, 41, 17, 38, 21, 35, 26, 29, 30, 22)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(3, 42, 10, 42, 17, 39, 21, 36, 29, 26, 33, 16, 37, 2, 37, -12, 32, -27, 24, -35, 16, -38, -14, -38, -26, -34, -32, -28, -37, -19, -39, -10, -39, 6, -38, 15, -31, 27, -24, 36, -15, 41, -6, 42, -3, 40, 1, 40)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
