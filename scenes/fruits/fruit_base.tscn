@@ -6,10 +6,11 @@
 radius = 104.077
 
 [node name="Fruit" type="RigidBody2D"]
+collision_mask = 5
 script = ExtResource("1_h5cky")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.257812, 0.257813)
+scale = Vector2(0.258, 0.258)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ajqre")

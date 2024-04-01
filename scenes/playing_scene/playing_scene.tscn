@@ -1,25 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6if05kcbqe64"]
+[gd_scene load_steps=5 format=3 uid="uid://b6if05kcbqe64"]
 
 [ext_resource type="Script" path="res://scenes/playing_scene/playing_scene.gd" id="1_rbvdr"]
+[ext_resource type="Texture2D" uid="uid://cxixb8f70o7ue" path="res://graphics/main_game_ui/death_line.png" id="2_70rpm"]
 [ext_resource type="Texture2D" uid="uid://crguumcrq7gjh" path="res://graphics/main_game_ui/fruit_container.png" id="2_lsrky"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0npbm"]
+size = Vector2(1310, 993)
 
 [node name="PlayingScene" type="Node2D"]
 script = ExtResource("1_rbvdr")
 
+[node name="DeathLine" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.309804)
+position = Vector2(579.25, 133)
+scale = Vector2(0.842773, 0.845703)
+texture = ExtResource("2_70rpm")
+
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(0, 560)
+collision_layer = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor"]
 position = Vector2(736, 504)
-polygon = PackedVector2Array(54, -794, 55, 295, 1032, 297, 1034, -794, 1493, -1165, 2144, -1675, 2109, -1687, 1492, -1193, 1007, -804, 1009, 277, 81, 277, 79, -805, -404, -1194, -935, -1627, -951, -1584, -404, -1165)
+polygon = PackedVector2Array(-591, -1099, -382, -929, -382, -435, 61, -434, 62, -931, 272, -1099, 516, -1292, 505, -1302, 271, -1112, 50, -934, 51, -443, -371, -443, -371, -934, -591, -1111, -753, -1251, -765, -1236)
 
 [node name="Sprite2D" type="Sprite2D" parent="Floor"]
-position = Vector2(1280, 57)
-scale = Vector2(3.70703, 2.99965)
+position = Vector2(576, -268)
+scale = Vector2(1.685, 1.364)
 texture = ExtResource("2_lsrky")
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(1743, 247)
+[node name="BoundaryLeft" type="Marker2D" parent="."]
+position = Vector2(365, 130)
 
-[node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(817, 250)
+[node name="BoundaryRight" type="Marker2D" parent="."]
+position = Vector2(786, 130)
+
+[node name="FruitDetector" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FruitDetector"]
+visible = false
+position = Vector2(612, -367)
+shape = SubResource("RectangleShape2D_0npbm")
+debug_color = Color(0.678431, 0.231373, 0.333333, 0.0627451)

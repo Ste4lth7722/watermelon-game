@@ -1,19 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7ggkfi0wvug4"]
+[gd_scene load_steps=5 format=3 uid="uid://b78qyflv34pyd"]
 
 [ext_resource type="PackedScene" uid="uid://c8pxyqovdsnuf" path="res://scenes/fruits/fruit_base.tscn" id="1_6f1nl"]
 [ext_resource type="Texture2D" uid="uid://ctlnmkeug3niw" path="res://graphics/fruits/cherry.png" id="1_shajm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yhp1y"]
-radius = 24.0
+radius = 22.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xlcqt"]
-radius = 24.0
+radius = 23.0
 
 [node name="Cherry" groups=["cherry"] instance=ExtResource("1_6f1nl")]
 
 [node name="Sprite2D" parent="." index="0"]
-position = Vector2(0, -20)
-scale = Vector2(0.351563, 0.351564)
+position = Vector2(5.96046e-08, -18)
+scale = Vector2(0.328125, 0.328125)
 texture = ExtResource("1_shajm")
 
 [node name="CollisionShape2D" parent="." index="1"]

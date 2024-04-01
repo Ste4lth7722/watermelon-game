@@ -4,14 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://dx4fnkkqfo13h" path="res://graphics/fruits/lemon.png" id="2_42i2j"]
 
 [node name="Lemon" type="RigidBody2D" groups=["lemon"]]
+collision_mask = 5
 script = ExtResource("1_8ejis")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2, 1)
-scale = Vector2(0.328125, 0.328126)
+position = Vector2(0, -1)
+scale = Vector2(0.335938, 0.335938)
 texture = ExtResource("2_42i2j")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-1.99014, -1.98026)
+scale = Vector2(1.01974, 1.01974)
 polygon = PackedVector2Array(27, 8, 28, -1, 27, -12, 22, -24, 17, -31, 12, -33, 7, -33, 2, -36, -2, -36, -5, -33, -11, -32, -17, -30, -23, -26, -27, -21, -29, -15, -29, -1, -29, 6, -26, 16, -22, 24, -15, 29, -6, 33, 2, 34, 7, 34, 14, 31, 20, 25, 24, 16)
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -19,6 +22,8 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(-1.98623, -0.972454)
+scale = Vector2(1.02754, 1.02754)
 polygon = PackedVector2Array(21, 25, 28, 8, 29, -1, 27, -12, 23, -24, 18, -31, 12, -34, 7, -34, 2, -37, -3, -37, -6, -34, -17, -31, -23, -27, -28, -21, -30, -15, -30, 6, -27, 16, -23, 24, -15, 30, -6, 34, 7, 35, 15, 31)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

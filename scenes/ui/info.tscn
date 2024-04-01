@@ -1,0 +1,95 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce6vuu3oqhg7n"]
+
+[ext_resource type="Script" path="res://scenes/ui/info.gd" id="1_2q2uu"]
+[ext_resource type="Theme" uid="uid://b6k02yk4mj20q" path="res://themes/main_theme.tres" id="2_ahpqp"]
+
+[node name="Info" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2q2uu")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.294118, 0.27451, 0.286275, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.0
+offset_top = 16.0
+offset_right = 31.0
+offset_bottom = 61.0
+grow_horizontal = 2
+theme = ExtResource("2_ahpqp")
+text = "Info"
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 19.0
+offset_right = 148.0
+offset_bottom = 63.0
+theme = ExtResource("2_ahpqp")
+text = "Back"
+
+[node name="InfoContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -289.0
+offset_top = -216.0
+offset_right = 289.0
+offset_bottom = 264.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="InfoContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ahpqp")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="InfoContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 9.0
+offset_right = -15.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[u]WATERMELON GAME[/u]
+
+Dropping two fruit of the same type onto each other creates a new fruit of a higher merge level.
+The merge levels are as follows:
+[i]Grape-> Cherry-> Strawberry-> Lemon-> Orange-> Apple-> Pear-> Pineapple-> Cantaloupe-> Watermelon.[/i]
+
+If a watermelon is merged, it turns into a grape.
+When you merge a fruit, the score gained is equal to 2 to the power of the merge level.
+
+There is a cooldown to dropping fruits that can be seen by the drop indicator at the top. This not only turns opaque, but shows the next fruit to be dropped, allowing for strategies to get the most watermelons.
+
+The fruit picked each drop is usually a grape, but can be a cherry and rarely even a strawberry. Plan where you drop these for the highest score."
+scroll_active = false
+
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

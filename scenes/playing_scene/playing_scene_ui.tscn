@@ -18,10 +18,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -254.0
-offset_top = 12.0
-offset_right = -80.0
-offset_bottom = 76.0
+offset_left = -138.0
+offset_top = 19.0
+offset_right = -17.0
+offset_bottom = 64.0
 grow_horizontal = 0
 theme = ExtResource("2_5vtxp")
 text = "Score: 0"
@@ -30,24 +30,61 @@ text = "Score: 0"
 layout_mode = 0
 offset_left = 25.0
 offset_top = 21.0
-offset_right = 228.0
-offset_bottom = 96.0
+offset_right = 165.0
+offset_bottom = 65.0
 theme = ExtResource("2_5vtxp")
 text = "Pause"
 
 [node name="DropIndicatorHolder" type="Control" parent="."]
+z_index = -1
 anchors_preset = 0
-offset_left = 1280.0
-offset_top = -66.0
-offset_right = 1280.0
-offset_bottom = -66.0
+offset_left = 513.0
+offset_top = -140.0
+offset_right = 513.0
+offset_bottom = -140.0
 metadata/_edit_group_ = true
 
 [node name="DropIndicator" type="TextureRect" parent="DropIndicatorHolder"]
-modulate = Color(1, 1, 1, 0.196078)
+modulate = Color(1, 1, 1, 0.156863)
 layout_mode = 0
-offset_right = 52.0
-offset_bottom = 52.0
+offset_right = 38.0
+offset_bottom = 38.0
+texture = ExtResource("2_apywl")
+expand_mode = 1
+
+[node name="GameOverTimer" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 21.0
+offset_right = 20.0
+offset_bottom = 66.0
+grow_horizontal = 2
+theme = ExtResource("2_5vtxp")
+text = "0"
+
+[node name="NextUpLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -153.0
+offset_top = 459.0
+offset_right = -18.0
+offset_bottom = 504.0
+grow_horizontal = 0
+theme = ExtResource("2_5vtxp")
+text = "Next Up:"
+
+[node name="NextUpIndicator" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1013.0
+offset_top = 507.0
+offset_right = 1119.0
+offset_bottom = 613.0
 texture = ExtResource("2_apywl")
 expand_mode = 1
 

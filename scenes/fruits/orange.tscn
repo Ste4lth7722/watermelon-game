@@ -4,15 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://dfkkvv0uwnbfn" path="res://graphics/fruits/orange.png" id="2_oy6sx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yj21w"]
-radius = 36.0139
+radius = 41.0122
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_db6vq"]
-radius = 36.3456
+radius = 42.0
 
 [node name="Orange" groups=["orange"] instance=ExtResource("1_x7na7")]
 
 [node name="Sprite2D" parent="." index="0"]
-scale = Vector2(0.289063, 0.289064)
+scale = Vector2(0.335938, 0.335938)
 texture = ExtResource("2_oy6sx")
 
 [node name="CollisionShape2D" parent="." index="1"]
