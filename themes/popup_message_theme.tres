@@ -1,0 +1,33 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dexktkc0m8h3d"]
+
+[ext_resource type="StyleBox" uid="uid://bp7qluj2cwjwg" path="res://themes/styleboxes/popup_focus_button.tres" id="1_2kn56"]
+[ext_resource type="StyleBox" uid="uid://cji5by261q6ku" path="res://themes/styleboxes/popup_hover_button.tres" id="2_5aid0"]
+[ext_resource type="StyleBox" uid="uid://71d7m0gqjwch" path="res://themes/styleboxes/popup_normal_button.tres" id="3_yqkwo"]
+[ext_resource type="StyleBox" uid="uid://fl8midyosok4" path="res://themes/styleboxes/popup_pressed_button.tres" id="4_g8alk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hktxh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_40let"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_24cas"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2cxyf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oyuvi"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[resource]
+resource_name = "popup theme"
+Button/styles/focus = ExtResource("1_2kn56")
+Button/styles/hover = ExtResource("2_5aid0")
+Button/styles/normal = ExtResource("3_yqkwo")
+Button/styles/pressed = ExtResource("4_g8alk")
+CheckBox/styles/hover = SubResource("StyleBoxEmpty_hktxh")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxEmpty_40let")
+CheckBox/styles/normal = SubResource("StyleBoxEmpty_24cas")
+CheckBox/styles/pressed = SubResource("StyleBoxEmpty_2cxyf")
+Panel/styles/panel = SubResource("StyleBoxFlat_oyuvi")

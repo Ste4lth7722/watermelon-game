@@ -1,0 +1,105 @@
+[gd_scene load_steps=4 format=3 uid="uid://djyp34lmpeyoi"]
+
+[ext_resource type="Theme" uid="uid://b6k02yk4mj20q" path="res://themes/main_theme.tres" id="1_0qkc2"]
+[ext_resource type="Script" path="res://scenes/ui/shop_ui.gd" id="1_pibm0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oswun"]
+bg_color = Color(0.180392, 0.235294, 0.219608, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="ShopUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pibm0")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -279.0
+offset_top = -146.0
+offset_right = 279.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0qkc2")
+theme_override_styles/panel = SubResource("StyleBoxFlat_oswun")
+
+[node name="CloseShop" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -33.0
+offset_top = -21.0
+offset_right = 15.0
+offset_bottom = 23.0
+grow_horizontal = 0
+focus_mode = 0
+text = "X"
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -22.0
+offset_top = 5.0
+offset_right = 22.0
+offset_bottom = 28.0
+grow_horizontal = 2
+text = "SHOP"
+
+[node name="SaveFruit" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -43.0
+offset_right = 142.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("1_0qkc2")
+text = "Save Fruit - 10 Coins"
+
+[node name="ThrowFruit" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.5
+offset_top = 11.0
+offset_right = 160.5
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("1_0qkc2")
+text = "Throw Fruit - 100 Coins"
+
+[connection signal="button_down" from="Panel/CloseShop" to="." method="play_action_click"]
+[connection signal="button_up" from="Panel/CloseShop" to="." method="play_action_release"]
+[connection signal="pressed" from="Panel/CloseShop" to="." method="_on_close_shop_pressed"]
+[connection signal="button_down" from="Panel/SaveFruit" to="." method="play_action_click"]
+[connection signal="button_up" from="Panel/SaveFruit" to="." method="play_action_release"]
+[connection signal="pressed" from="Panel/SaveFruit" to="." method="_on_save_fruit_pressed"]
+[connection signal="button_down" from="Panel/ThrowFruit" to="." method="play_action_click"]
+[connection signal="button_up" from="Panel/ThrowFruit" to="." method="play_action_release"]
+[connection signal="pressed" from="Panel/ThrowFruit" to="." method="_on_throw_fruit_pressed"]

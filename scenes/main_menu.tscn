@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://4k3v4h25wisu"]
+[gd_scene load_steps=7 format=3 uid="uid://4k3v4h25wisu"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_fk3vq"]
 [ext_resource type="Theme" uid="uid://b6k02yk4mj20q" path="res://themes/main_theme.tres" id="2_dne5h"]
+[ext_resource type="Theme" uid="uid://c6wjmgtbcj7l6" path="res://themes/secondary_theme.tres" id="3_q6reu"]
+[ext_resource type="Theme" uid="uid://dexktkc0m8h3d" path="res://themes/popup_message_theme.tres" id="4_leu4w"]
+[ext_resource type="Theme" uid="uid://ldt2pdi3ynrf" path="res://themes/secondary_checkbox_theme.tres" id="4_u4yff"]
+[ext_resource type="Texture2D" uid="uid://bhkhy1bbwid56" path="res://ui_elements/popups/arrows/main_menu_fullscreen.png" id="5_bsdel"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -21,23 +25,23 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.294118, 0.27451, 0.286275, 1)
 
-[node name="Start" type="Button" parent="."]
+[node name="StartButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -62.0
-offset_top = 16.0
-offset_right = 62.0
-offset_bottom = 60.0
+offset_left = -91.0
+offset_top = -38.0
+offset_right = 91.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_dne5h")
 text = "Start"
 
-[node name="Exit" type="Button" parent="."]
+[node name="ExitButton" type="Button" parent="."]
 layout_mode = 1
 offset_left = 24.0
 offset_top = 19.0
@@ -46,20 +50,63 @@ offset_bottom = 63.0
 theme = ExtResource("2_dne5h")
 text = "Exit"
 
-[node name="Info" type="Button" parent="."]
+[node name="StatsButton" type="Button" parent="."]
+layout_mode = 1
+offset_left = 24.0
+offset_top = 585.0
+offset_right = 134.0
+offset_bottom = 629.0
+theme = ExtResource("2_dne5h")
+text = "Stats"
+
+[node name="QuestsButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -61.0
+offset_right = -24.0
+offset_bottom = -17.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+theme = ExtResource("2_dne5h")
+disabled = true
+text = "Quests"
+
+[node name="SettingsButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -138.0
+offset_left = -188.0
 offset_top = 19.0
 offset_right = -24.0
 offset_bottom = 63.0
 grow_horizontal = 0
 theme = ExtResource("2_dne5h")
-text = "Info"
+text = "Settings"
 
-[node name="Label" type="Label" parent="."]
+[node name="InfoButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = 150.0
+offset_right = 61.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_dne5h")
+text = "Game Information"
+
+[node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -67,14 +114,272 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -145.5
-offset_top = -67.5
+offset_top = -100.5
 offset_right = 145.5
-offset_bottom = -22.5
+offset_bottom = -55.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_dne5h")
 text = "Watermelon Game"
 
-[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="Info" to="." method="_on_info_pressed"]
+[node name="LengthPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.0
+offset_top = 41.0
+offset_right = 159.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_dne5h")
+metadata/_edit_group_ = true
+
+[node name="LengthInfo" type="Label" parent="LengthPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 5.0
+offset_bottom = 41.0
+grow_horizontal = 2
+theme = ExtResource("3_q6reu")
+text = "Length of Game: 100%"
+horizontal_alignment = 1
+
+[node name="LengthSlider" type="HSlider" parent="LengthPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.706
+anchor_right = 1.0
+anchor_bottom = 0.706
+offset_left = 15.0
+offset_top = -8.304
+offset_right = -15.0
+offset_bottom = 7.696
+grow_horizontal = 2
+grow_vertical = 2
+min_value = 15.0
+value = 100.0
+
+[node name="ScrollSoundTimer" type="Timer" parent="LengthPanel"]
+wait_time = 0.2
+one_shot = true
+
+[node name="GameOptionsMenu" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 169.0
+offset_top = 38.0
+offset_right = 475.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_u4yff")
+
+[node name="ClusterGrapeManiaInfo" type="Label" parent="GameOptionsMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -29.5
+offset_right = 61.0
+offset_bottom = -6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cluster Grape Mania"
+horizontal_alignment = 1
+
+[node name="SkyHighInfo" type="Label" parent="GameOptionsMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.5
+offset_top = 8.0
+offset_right = 144.5
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sky High Mode (experimental)"
+horizontal_alignment = 1
+
+[node name="ClusterGrapeManiaCheckbox" type="CheckBox" parent="GameOptionsMenu"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 8.0
+offset_right = 38.0
+offset_bottom = 32.0
+
+[node name="SkyHighModeCheckbox" type="CheckBox" parent="GameOptionsMenu"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 46.0
+offset_right = 51.0
+offset_bottom = 86.0
+
+[node name="FineTuneOptionsPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 192.0
+offset_top = 136.0
+offset_right = 451.0
+offset_bottom = 205.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_u4yff")
+
+[node name="EnableClusterGrapesInfo" type="Label" parent="FineTuneOptionsPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.5
+offset_top = -29.0
+offset_right = 121.5
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cluster Grapes - Enabled"
+horizontal_alignment = 1
+
+[node name="EnableClusterGrapes" type="CheckButton" parent="FineTuneOptionsPanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = -28.0
+offset_right = 49.0
+offset_bottom = -4.0
+grow_vertical = 2
+button_pressed = true
+
+[node name="EnableCherryBombsInfo" type="Label" parent="FineTuneOptionsPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = 2.5
+offset_right = 118.5
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cherry Bombs - Enabled"
+horizontal_alignment = 1
+
+[node name="EnableCherryBombs" type="CheckButton" parent="FineTuneOptionsPanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 49.0
+offset_bottom = 27.0
+grow_vertical = 2
+button_pressed = true
+
+[node name="NewInfoHintPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 343.0
+offset_top = 528.0
+offset_right = 557.0
+offset_bottom = 591.0
+theme = ExtResource("4_leu4w")
+
+[node name="CloseNewInfoHintPanelButton" type="Button" parent="NewInfoHintPanel"]
+layout_mode = 0
+offset_left = -17.0
+offset_top = -20.0
+offset_right = 29.0
+offset_bottom = 19.0
+text = "X"
+
+[node name="Label" type="Label" parent="NewInfoHintPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -24.5
+offset_right = 94.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "[NEW] Info page tabs,
+Updated information"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="NewInfoHintPanel"]
+modulate = Color(0.772549, 0.862745, 0.803922, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -46.5
+offset_right = 52.0
+offset_bottom = 21.5
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("5_bsdel")
+expand_mode = 1
+
+[connection signal="button_down" from="StartButton" to="." method="play_menu_click_click"]
+[connection signal="pressed" from="StartButton" to="." method="play_menu_click_release"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_pressed"]
+[connection signal="button_down" from="ExitButton" to="." method="play_menu_click_click"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_pressed"]
+[connection signal="button_down" from="StatsButton" to="." method="play_menu_click_click"]
+[connection signal="button_up" from="StatsButton" to="." method="play_menu_click_release"]
+[connection signal="pressed" from="StatsButton" to="." method="_on_stats_button_pressed"]
+[connection signal="button_down" from="QuestsButton" to="." method="play_menu_click_click"]
+[connection signal="button_up" from="QuestsButton" to="." method="play_menu_click_release"]
+[connection signal="pressed" from="QuestsButton" to="." method="_on_quests_button_pressed"]
+[connection signal="button_down" from="SettingsButton" to="." method="play_menu_click_click"]
+[connection signal="pressed" from="SettingsButton" to="." method="play_menu_click_release"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="button_down" from="InfoButton" to="." method="play_menu_click_click"]
+[connection signal="pressed" from="InfoButton" to="." method="play_menu_click_release"]
+[connection signal="pressed" from="InfoButton" to="." method="_on_info_pressed"]
+[connection signal="value_changed" from="LengthPanel/LengthSlider" to="." method="_on_length_slider_value_changed"]
+[connection signal="button_down" from="GameOptionsMenu/ClusterGrapeManiaCheckbox" to="." method="play_action_click_click"]
+[connection signal="button_up" from="GameOptionsMenu/ClusterGrapeManiaCheckbox" to="." method="play_action_click_release"]
+[connection signal="toggled" from="GameOptionsMenu/ClusterGrapeManiaCheckbox" to="." method="_on_cluster_grape_mania_checkbox_toggled"]
+[connection signal="button_down" from="GameOptionsMenu/SkyHighModeCheckbox" to="." method="play_action_click_click"]
+[connection signal="button_up" from="GameOptionsMenu/SkyHighModeCheckbox" to="." method="play_action_click_release"]
+[connection signal="toggled" from="GameOptionsMenu/SkyHighModeCheckbox" to="." method="_on_sky_high_mode_checkbox_toggled"]
+[connection signal="button_down" from="FineTuneOptionsPanel/EnableClusterGrapes" to="." method="play_action_click_click"]
+[connection signal="button_up" from="FineTuneOptionsPanel/EnableClusterGrapes" to="." method="play_action_click_release"]
+[connection signal="toggled" from="FineTuneOptionsPanel/EnableClusterGrapes" to="." method="_on_enable_cluster_grapes_toggled"]
+[connection signal="button_down" from="FineTuneOptionsPanel/EnableCherryBombs" to="." method="play_action_click_click"]
+[connection signal="button_up" from="FineTuneOptionsPanel/EnableCherryBombs" to="." method="play_action_click_release"]
+[connection signal="toggled" from="FineTuneOptionsPanel/EnableCherryBombs" to="." method="_on_enable_cherry_bombs_toggled"]
+[connection signal="button_down" from="NewInfoHintPanel/CloseNewInfoHintPanelButton" to="." method="play_action_click_click"]
+[connection signal="button_up" from="NewInfoHintPanel/CloseNewInfoHintPanelButton" to="." method="play_action_click_release"]
+[connection signal="pressed" from="NewInfoHintPanel/CloseNewInfoHintPanelButton" to="." method="_on_close_new_info_hint_panel_button_pressed"]

@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dx1bfgn8hyby6"]
+
+[ext_resource type="Texture2D" uid="uid://cm85i7psh641v" path="res://ui_elements/checkbox_checked2.png" id="1_78dp3"]
+[ext_resource type="Texture2D" uid="uid://div1p50g3klu3" path="res://ui_elements/checkbox_unchecked2.png" id="2_1vf16"]
+
+[resource]
+CheckBox/font_sizes/font_size = 22
+CheckBox/icons/checked = ExtResource("1_78dp3")
+CheckBox/icons/unchecked = ExtResource("2_1vf16")

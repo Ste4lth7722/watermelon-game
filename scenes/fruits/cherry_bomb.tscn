@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://ya8of8ucfswi"]
+
+[ext_resource type="PackedScene" uid="uid://c8pxyqovdsnuf" path="res://scenes/fruits/fruit_base.tscn" id="1_igmvu"]
+[ext_resource type="Texture2D" uid="uid://b5iyahp4258ir" path="res://graphics/fruits/cherry_bomb.png" id="2_a0vv7"]
+[ext_resource type="Script" path="res://scenes/fruits/ExplosionManager.gd" id="3_gsw80"]
+[ext_resource type="Texture2D" uid="uid://p0ophtx66ls3" path="res://graphics/main_game_ui/smoke.png" id="4_fsqw0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8r7ce"]
+radius = 22.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uwx7i"]
+radius = 199.063
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xxlvi"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 224.68
+initial_velocity_max = 447.71
+gravity = Vector3(0, 0, 0)
+
+[node name="CherryBomb" groups=["bomb", "cherry_bomb"] instance=ExtResource("1_igmvu")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+visible = false
+shape = SubResource("CircleShape2D_8r7ce")
+
+[node name="Sprite2D" parent="Node2D" index="0"]
+position = Vector2(0, -18)
+scale = Vector2(0.328, 0.328)
+texture = ExtResource("2_a0vv7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+visible = false
+scale = Vector2(1.08, 1.08)
+shape = SubResource("CircleShape2D_8r7ce")
+
+[node name="ExplosionManager" type="Area2D" parent="." index="4"]
+script = ExtResource("3_gsw80")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionManager" index="0"]
+visible = false
+shape = SubResource("CircleShape2D_uwx7i")
+debug_color = Color(0.482353, 0.12549, 0.203922, 0.0941176)
+
+[node name="ExplosionFX" type="GPUParticles2D" parent="." index="5"]
+emitting = false
+amount = 24
+process_material = SubResource("ParticleProcessMaterial_xxlvi")
+texture = ExtResource("4_fsqw0")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.9

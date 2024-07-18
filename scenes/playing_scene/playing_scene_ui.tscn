@@ -1,8 +1,269 @@
-[gd_scene load_steps=4 format=3 uid="uid://bq8ugl0t04wo0"]
+[gd_scene load_steps=26 format=3 uid="uid://bq8ugl0t04wo0"]
 
 [ext_resource type="Script" path="res://scenes/playing_scene/playing_scene_ui.gd" id="1_1ix6o"]
 [ext_resource type="Theme" uid="uid://b6k02yk4mj20q" path="res://themes/main_theme.tres" id="2_5vtxp"]
 [ext_resource type="Texture2D" uid="uid://cd4rci1tflfje" path="res://graphics/fruits/grape.png" id="2_apywl"]
+[ext_resource type="Script" path="res://scenes/playing_scene/DropIndicator.gd" id="3_jpnx1"]
+[ext_resource type="Texture2D" uid="uid://djsayi4kkh1k8" path="res://graphics/main_game_ui/fruit_throw_indicator.png" id="4_mlpjl"]
+[ext_resource type="Script" path="res://scenes/playing_scene/FruitIndicators.gd" id="4_vcy8v"]
+[ext_resource type="StyleBox" uid="uid://bp7qluj2cwjwg" path="res://themes/styleboxes/popup_focus_button.tres" id="4_ydg2g"]
+[ext_resource type="StyleBox" uid="uid://cji5by261q6ku" path="res://themes/styleboxes/popup_hover_button.tres" id="5_4d580"]
+[ext_resource type="StyleBox" uid="uid://71d7m0gqjwch" path="res://themes/styleboxes/popup_normal_button.tres" id="6_adeg0"]
+[ext_resource type="Texture2D" uid="uid://bgq4c8sbo41un" path="res://graphics/main_game_ui/panel_stuff/next_up_bg_bg.png" id="6_nytg3"]
+[ext_resource type="Texture2D" uid="uid://dl46wi8p6vj1i" path="res://graphics/main_game_ui/panel_stuff/next_up_bg.png" id="7_a8reo"]
+[ext_resource type="StyleBox" uid="uid://fl8midyosok4" path="res://themes/styleboxes/popup_pressed_button.tres" id="7_xyr1h"]
+[ext_resource type="Theme" uid="uid://dexktkc0m8h3d" path="res://themes/popup_message_theme.tres" id="8_i0l1x"]
+[ext_resource type="Texture2D" uid="uid://03a3bjdav1yk" path="res://graphics/main_game_ui/fruit_wheel.png" id="9_qwbm7"]
+[ext_resource type="PackedScene" uid="uid://djyp34lmpeyoi" path="res://scenes/ui/shop_ui.tscn" id="10_o6edq"]
+
+[sub_resource type="Theme" id="Theme_7yxbm"]
+Label/font_sizes/font_size = 24
+
+[sub_resource type="Theme" id="Theme_qd1a1"]
+Label/font_sizes/font_size = 24
+
+[sub_resource type="Animation" id="Animation_haxj7"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CurrentPanel/CurrentImage:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(14.0001, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CurrentPanel/CurrentImage:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(34, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("QueuedPanel/QueuedImage:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(34.0016, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("QueuedPanel/QueuedImage:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(14, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("QueuedPanel/AnimationPlaceholder:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(178.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("QueuedPanel/AnimationPlaceholder:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(34, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_su8ev"]
+resource_name = "update"
+length = 0.25
+step = 0.025
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QueuedPanel/QueuedImage:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(34, -0.25, 0, 0.25, 0, -124, -0.025, 0, 0.025, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CurrentPanel/CurrentImage:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(14, -0.25, 0, 0.25, 0, 174, -0.1, -20.5, 0.075, 1.5),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("QueuedPanel/AnimationPlaceholder:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(178.5, -0.25, 0, 0.25, 0, 13.5, -0.075, 73, 0.115, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("QueuedPanel/QueuedImage:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(14, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CurrentPanel/CurrentImage:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(34, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("QueuedPanel/AnimationPlaceholder:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(34, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0cr03"]
+_data = {
+"RESET": SubResource("Animation_haxj7"),
+"update": SubResource("Animation_su8ev")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fc88o"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Theme" id="Theme_ym70g"]
+resource_name = "popup theme"
+Button/styles/focus = ExtResource("4_ydg2g")
+Button/styles/hover = ExtResource("5_4d580")
+Button/styles/normal = ExtResource("6_adeg0")
+Button/styles/pressed = ExtResource("7_xyr1h")
+Panel/styles/panel = SubResource("StyleBoxFlat_fc88o")
+
+[sub_resource type="Animation" id="Animation_1xbkl"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DropIndicator:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FruitIndicatorHolder/SavedPanel/Image:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(19, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FruitIndicatorHolder/SavedPanel/Image:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(36, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_p1cca"]
+resource_name = "ready_saved_fruit"
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DropIndicator:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0, -45, -0.2, 55, 0.1, 37.2031, 74.7031, -0.25, 0, 0.0922297, -27.5, 48.3031, -0.0577703, 1.1, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 0.75, 0.9)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"saved_fruit_ready_animation_finishing"
+}]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FruitIndicatorHolder/SavedPanel/Image:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(19, -0.25, 0, 0.25, 0, -140, -0.25, 0, 0.25, 0, 19, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 0.75)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_brvmr"]
+_data = {
+"RESET": SubResource("Animation_1xbkl"),
+"ready_saved_fruit": SubResource("Animation_p1cca")
+}
 
 [node name="PlayingSceneUI" type="Control"]
 layout_mode = 3
@@ -13,47 +274,59 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1ix6o")
 
-[node name="PointsLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -138.0
-offset_top = 19.0
-offset_right = -17.0
-offset_bottom = 64.0
-grow_horizontal = 0
-theme = ExtResource("2_5vtxp")
-text = "Score: 0"
-
 [node name="PauseButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 21.0
-offset_right = 165.0
-offset_bottom = 65.0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 150.0
+offset_bottom = 53.0
 theme = ExtResource("2_5vtxp")
 text = "Pause"
 
-[node name="DropIndicatorHolder" type="Control" parent="."]
+[node name="DropIndicator" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0.580392)
 z_index = -1
 anchors_preset = 0
 offset_left = 513.0
-offset_top = -140.0
+offset_top = 50.0
 offset_right = 513.0
-offset_bottom = -140.0
-metadata/_edit_group_ = true
+offset_bottom = 50.0
+script = ExtResource("3_jpnx1")
 
-[node name="DropIndicator" type="TextureRect" parent="DropIndicatorHolder"]
-modulate = Color(1, 1, 1, 0.156863)
+[node name="FruitThrowIndicator" type="TextureRect" parent="DropIndicator"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -39.0
+offset_right = 289.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+pivot_offset = Vector2(23, 39)
+texture = ExtResource("4_mlpjl")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ImageHolder" type="Control" parent="DropIndicator"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Image" type="TextureRect" parent="DropIndicator/ImageHolder"]
 layout_mode = 0
-offset_right = 38.0
-offset_bottom = 38.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 texture = ExtResource("2_apywl")
 expand_mode = 1
 
 [node name="GameOverTimer" type="Label" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -66,26 +339,374 @@ grow_horizontal = 2
 theme = ExtResource("2_5vtxp")
 text = "0"
 
-[node name="NextUpLabel" type="Label" parent="."]
+[node name="StatsPanel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -153.0
-offset_top = 459.0
-offset_right = -18.0
-offset_bottom = 504.0
-grow_horizontal = 0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 352.0
+offset_top = -109.0
+offset_right = 567.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
 theme = ExtResource("2_5vtxp")
-text = "Next Up:"
+metadata/_edit_group_ = true
 
-[node name="NextUpIndicator" type="TextureRect" parent="."]
+[node name="ScoreLabel" type="Label" parent="StatsPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.5
+offset_top = -44.5
+offset_right = 60.5
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_5vtxp")
+text = "Score: 0"
+
+[node name="CoinsLabel" type="Label" parent="StatsPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.5
+offset_top = -1.5
+offset_right = 60.5
+offset_bottom = 43.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_5vtxp")
+text = "Coins: 0"
+
+[node name="FruitIndicatorHolder" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_vcy8v")
+
+[node name="CurrentPanel" type="Panel" parent="FruitIndicatorHolder"]
+clip_children = 1
 layout_mode = 0
-offset_left = 1013.0
-offset_top = 507.0
-offset_right = 1119.0
-offset_bottom = 613.0
+offset_left = 1012.0
+offset_top = 10.0
+offset_right = 1142.0
+offset_bottom = 146.0
+theme = ExtResource("2_5vtxp")
+
+[node name="StripeBG" type="TextureRect" parent="FruitIndicatorHolder/CurrentPanel"]
+modulate = Color(0.317647, 0.27451, 0.34902, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_nytg3")
+expand_mode = 1
+
+[node name="StripeHolder" type="Control" parent="FruitIndicatorHolder/CurrentPanel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Stripe" type="TextureRect" parent="FruitIndicatorHolder/CurrentPanel/StripeHolder"]
+modulate = Color(0.415686, 0.341176, 0.498039, 0.690196)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -230.0
+offset_right = 1615.0
+offset_bottom = 810.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.738916, 0.738916)
+texture = ExtResource("7_a8reo")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="FruitIndicatorHolder/CurrentPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.5
+offset_right = 67.5
+offset_bottom = 45.0
+grow_horizontal = 2
+theme = SubResource("Theme_7yxbm")
+text = "Current:"
+horizontal_alignment = 1
+
+[node name="CurrentImage" type="TextureRect" parent="FruitIndicatorHolder/CurrentPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.9999
+offset_top = -102.0
+offset_right = 50.9998
+grow_horizontal = 2
+grow_vertical = 0
 texture = ExtResource("2_apywl")
 expand_mode = 1
 
+[node name="QueuedPanel" type="Panel" parent="FruitIndicatorHolder"]
+self_modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 0
+offset_left = 1012.0
+offset_top = 168.0
+offset_right = 1142.0
+offset_bottom = 304.0
+theme = ExtResource("2_5vtxp")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="FruitIndicatorHolder/QueuedPanel"]
+modulate = Color(1, 1, 1, 0.54902)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.5
+offset_right = 67.5
+offset_bottom = 45.0
+grow_horizontal = 2
+theme = SubResource("Theme_7yxbm")
+text = "Next Up:"
+horizontal_alignment = 1
+
+[node name="QueuedImage" type="TextureRect" parent="FruitIndicatorHolder/QueuedPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -101.998
+offset_right = 51.0
+offset_bottom = -0.000747681
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_apywl")
+expand_mode = 1
+
+[node name="AnimationPlaceholder" type="TextureRect" parent="FruitIndicatorHolder/QueuedPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 113.5
+offset_top = -102.0
+offset_right = 215.501
+offset_bottom = 0.000976563
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_apywl")
+expand_mode = 1
+
+[node name="SavedPanel" type="Panel" parent="FruitIndicatorHolder"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 76.0
+offset_right = 127.0
+offset_bottom = 200.0
+theme = ExtResource("2_5vtxp")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="FruitIndicatorHolder/SavedPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.5
+offset_right = 67.5
+offset_bottom = 45.0
+grow_horizontal = 2
+theme = SubResource("Theme_qd1a1")
+text = "Saved:"
+horizontal_alignment = 1
+
+[node name="UseSaved" type="Button" parent="FruitIndicatorHolder/SavedPanel"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 190.0
+offset_bottom = 44.0
+focus_mode = 0
+text = "  ---->"
+alignment = 2
+
+[node name="Image" type="TextureRect" parent="FruitIndicatorHolder/SavedPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.5
+offset_top = -88.0
+offset_right = 44.5
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FruitIndicatorHolder"]
+libraries = {
+"": SubResource("AnimationLibrary_0cr03")
+}
+
+[node name="SpamHintPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 906.0
+offset_top = 360.0
+offset_right = 1143.0
+offset_bottom = 421.0
+theme = SubResource("Theme_ym70g")
+metadata/_edit_group_ = true
+
+[node name="ClearSpamHint" type="Button" parent="SpamHintPanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -24.5
+offset_right = 15.0
+offset_bottom = 24.5
+grow_vertical = 2
+text = "X"
+
+[node name="Label" type="Label" parent="SpamHintPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hold down for 1 second to
+start spam placing fruit."
+
+[node name="OpenWheelPanelPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 534.0
+offset_right = 121.0
+offset_bottom = 638.0
+theme = ExtResource("2_5vtxp")
+
+[node name="OpenWheelPanel" type="TextureButton" parent="OpenWheelPanelPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("2_5vtxp")
+texture_normal = ExtResource("9_qwbm7")
+texture_pressed = ExtResource("9_qwbm7")
+texture_hover = ExtResource("9_qwbm7")
+texture_disabled = ExtResource("9_qwbm7")
+texture_focused = ExtResource("9_qwbm7")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="FruitWheelPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -222.0
+offset_right = 230.0
+offset_bottom = -8.0
+grow_vertical = 0
+theme = ExtResource("8_i0l1x")
+
+[node name="TextureRect" type="TextureRect" parent="FruitWheelPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -102.0
+offset_right = 102.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_qwbm7")
+expand_mode = 1
+
+[node name="MinimiseWheelPanel" type="Button" parent="FruitWheelPanel"]
+layout_mode = 0
+offset_left = 189.0
+offset_top = -14.0
+offset_right = 235.0
+offset_bottom = 25.0
+text = "X"
+
+[node name="ShopUI" parent="." instance=ExtResource("10_o6edq")]
+layout_mode = 1
+offset_top = 496.0
+offset_bottom = 496.0
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_brvmr")
+}
+
+[connection signal="button_down" from="PauseButton" to="." method="play_menu_click_click"]
+[connection signal="button_up" from="PauseButton" to="." method="play_menu_click_release"]
+[connection signal="mouse_entered" from="PauseButton" to="." method="mute_scene_clicks"]
+[connection signal="mouse_exited" from="PauseButton" to="." method="unmute_scene_clicks"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="button_down" from="FruitIndicatorHolder/SavedPanel/UseSaved" to="." method="play_action_click_click"]
+[connection signal="button_up" from="FruitIndicatorHolder/SavedPanel/UseSaved" to="." method="play_action_click_release"]
+[connection signal="mouse_entered" from="FruitIndicatorHolder/SavedPanel/UseSaved" to="." method="mute_scene_clicks"]
+[connection signal="mouse_exited" from="FruitIndicatorHolder/SavedPanel/UseSaved" to="." method="unmute_scene_clicks"]
+[connection signal="pressed" from="FruitIndicatorHolder/SavedPanel/UseSaved" to="." method="_on_use_saved_pressed"]
+[connection signal="button_down" from="SpamHintPanel/ClearSpamHint" to="." method="play_action_click_click"]
+[connection signal="button_up" from="SpamHintPanel/ClearSpamHint" to="." method="play_action_click_release"]
+[connection signal="mouse_entered" from="SpamHintPanel/ClearSpamHint" to="." method="mute_scene_clicks"]
+[connection signal="mouse_exited" from="SpamHintPanel/ClearSpamHint" to="." method="unmute_scene_clicks"]
+[connection signal="pressed" from="SpamHintPanel/ClearSpamHint" to="." method="_on_clear_spam_hint_pressed"]
+[connection signal="mouse_entered" from="OpenWheelPanelPanel" to="." method="mute_scene_clicks"]
+[connection signal="mouse_exited" from="OpenWheelPanelPanel" to="." method="unmute_scene_clicks"]
+[connection signal="button_down" from="OpenWheelPanelPanel/OpenWheelPanel" to="." method="play_menu_click_click"]
+[connection signal="button_up" from="OpenWheelPanelPanel/OpenWheelPanel" to="." method="play_menu_click_release"]
+[connection signal="pressed" from="OpenWheelPanelPanel/OpenWheelPanel" to="." method="_on_open_wheel_panel_pressed"]
+[connection signal="mouse_entered" from="FruitWheelPanel" to="." method="mute_scene_clicks"]
+[connection signal="mouse_exited" from="FruitWheelPanel" to="." method="unmute_scene_clicks"]
+[connection signal="button_down" from="FruitWheelPanel/MinimiseWheelPanel" to="." method="play_menu_click_click"]
+[connection signal="button_up" from="FruitWheelPanel/MinimiseWheelPanel" to="." method="play_menu_click_release"]
+[connection signal="mouse_entered" from="FruitWheelPanel/MinimiseWheelPanel" to="." method="mute_scene_clicks"]
+[connection signal="mouse_exited" from="FruitWheelPanel/MinimiseWheelPanel" to="." method="unmute_scene_clicks"]
+[connection signal="pressed" from="FruitWheelPanel/MinimiseWheelPanel" to="." method="_on_minimise_wheel_panel_pressed"]

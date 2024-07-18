@@ -1,33 +1,46 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6if05kcbqe64"]
+[gd_scene load_steps=9 format=3 uid="uid://b6if05kcbqe64"]
 
 [ext_resource type="Script" path="res://scenes/playing_scene/playing_scene.gd" id="1_rbvdr"]
 [ext_resource type="Texture2D" uid="uid://cxixb8f70o7ue" path="res://graphics/main_game_ui/death_line.png" id="2_70rpm"]
 [ext_resource type="Texture2D" uid="uid://crguumcrq7gjh" path="res://graphics/main_game_ui/fruit_container.png" id="2_lsrky"]
+[ext_resource type="Script" path="res://scenes/playing_scene/SkyHighDetector.gd" id="4_8valr"]
+[ext_resource type="Texture2D" uid="uid://wgsw3h53xvpv" path="res://graphics/main_game_ui/skyhigh_line.png" id="5_grugr"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e16wy"]
+friction = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0npbm"]
 size = Vector2(1310, 993)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7anlp"]
+size = Vector2(1310, 1456)
+
 [node name="PlayingScene" type="Node2D"]
 script = ExtResource("1_rbvdr")
 
-[node name="DeathLine" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.309804)
-position = Vector2(579.25, 133)
-scale = Vector2(0.842773, 0.845703)
-texture = ExtResource("2_70rpm")
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(0, 560)
+collision_layer = 4
+physics_material_override = SubResource("PhysicsMaterial_e16wy")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall"]
+visible = false
+position = Vector2(736, 504)
+polygon = PackedVector2Array(-875, -1067, -963, -867, -1027, -398, 77, -405, 382, -771, 457, -997, 568, -1157, 432, -1265, 675, -2716, 106, -2710, 428, -2597, 627.349, -2587.73, 271, -1112, 50, -934, 52, -416, -372, -416, -371, -934, -591, -1111, -1017.53, -2587.57, 396, -2612, 395, -2688, -1053, -2639, -765, -1236)
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall"]
+position = Vector2(576, -268)
+scale = Vector2(1.685, 1.364)
+texture = ExtResource("2_lsrky")
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(0, 560)
 collision_layer = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor"]
-position = Vector2(736, 504)
-polygon = PackedVector2Array(-591, -1099, -382, -929, -382, -435, 61, -434, 62, -931, 272, -1099, 516, -1292, 505, -1302, 271, -1112, 50, -934, 51, -443, -371, -443, -371, -934, -591, -1111, -753, -1251, -765, -1236)
-
-[node name="Sprite2D" type="Sprite2D" parent="Floor"]
-position = Vector2(576, -268)
-scale = Vector2(1.685, 1.364)
-texture = ExtResource("2_lsrky")
+visible = false
+position = Vector2(736, 509)
+polygon = PackedVector2Array(-649, -447, 371, -448, 437, 25, -719, 34)
 
 [node name="BoundaryLeft" type="Marker2D" parent="."]
 position = Vector2(365, 130)
@@ -35,11 +48,48 @@ position = Vector2(365, 130)
 [node name="BoundaryRight" type="Marker2D" parent="."]
 position = Vector2(786, 130)
 
-[node name="FruitDetector" type="Area2D" parent="."]
+[node name="MaxHeightDetector" type="Area2D" parent="."]
+position = Vector2(574, 133)
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FruitDetector"]
-visible = false
-position = Vector2(612, -367)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MaxHeightDetector"]
+position = Vector2(0, -500)
 shape = SubResource("RectangleShape2D_0npbm")
-debug_color = Color(0.678431, 0.231373, 0.333333, 0.0627451)
+debug_color = Color(0.678431, 0.231373, 0.333333, 0)
+
+[node name="DeathLine" type="Sprite2D" parent="MaxHeightDetector"]
+modulate = Color(1, 1, 1, 0.309804)
+z_index = -1
+scale = Vector2(0.842773, 0.845703)
+texture = ExtResource("2_70rpm")
+
+[node name="SkyHighManager" type="Area2D" parent="."]
+position = Vector2(574, 626)
+collision_layer = 2
+script = ExtResource("4_8valr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SkyHighManager"]
+position = Vector2(0, -728)
+shape = SubResource("RectangleShape2D_7anlp")
+debug_color = Color(0.407843, 0.623529, 0.780392, 0)
+
+[node name="MinLine" type="Sprite2D" parent="SkyHighManager"]
+modulate = Color(1, 1, 1, 0.745098)
+z_index = -1
+scale = Vector2(0.842773, 0.845703)
+texture = ExtResource("5_grugr")
+
+[node name="SkyHighLineHider" type="ColorRect" parent="."]
+z_index = -1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 336.0
+offset_top = 625.0
+offset_right = 808.0
+offset_bottom = 771.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.156863, 0.156863, 0.156863, 1)

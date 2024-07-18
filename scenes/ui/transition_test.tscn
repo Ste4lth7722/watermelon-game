@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhpxcr3ynd7tq"]
+
+[ext_resource type="PackedScene" uid="uid://c0srtdh48vgh1" path="res://scenes/fruits/apple.tscn" id="1_ee8ih"]
+
+[node name="TransitionTest" type="Node2D"]
+
+[node name="Apple" parent="." instance=ExtResource("1_ee8ih")]
+position = Vector2(477, 486)
+linear_velocity = Vector2(10.24, -11.655)
+
+[node name="Apple2" parent="." instance=ExtResource("1_ee8ih")]
+position = Vector2(802, 492)
+linear_velocity = Vector2(-10.665, -10.195)

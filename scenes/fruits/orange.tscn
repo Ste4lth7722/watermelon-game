@@ -1,22 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://buq4nf773mfex"]
+[gd_scene load_steps=4 format=3 uid="uid://buq4nf773mfex"]
 
 [ext_resource type="PackedScene" uid="uid://c8pxyqovdsnuf" path="res://scenes/fruits/fruit_base.tscn" id="1_x7na7"]
 [ext_resource type="Texture2D" uid="uid://dfkkvv0uwnbfn" path="res://graphics/fruits/orange.png" id="2_oy6sx"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yj21w"]
-radius = 41.0122
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_db6vq"]
-radius = 42.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_si7oc"]
+radius = 44.0114
 
 [node name="Orange" groups=["orange"] instance=ExtResource("1_x7na7")]
 
-[node name="Sprite2D" parent="." index="0"]
-scale = Vector2(0.335938, 0.335938)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+visible = false
+shape = SubResource("CircleShape2D_si7oc")
+
+[node name="Sprite2D" parent="Node2D" index="0"]
+scale = Vector2(0.36, 0.36)
 texture = ExtResource("2_oy6sx")
 
-[node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("CircleShape2D_yj21w")
-
-[node name="CollisionShape2D2" parent="Area2D" index="0"]
-shape = SubResource("CircleShape2D_db6vq")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+visible = false
+scale = Vector2(1.05, 1.05)
+shape = SubResource("CircleShape2D_si7oc")

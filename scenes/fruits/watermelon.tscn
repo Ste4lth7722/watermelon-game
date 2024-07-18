@@ -1,32 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvrj46aj7a11m"]
+[gd_scene load_steps=4 format=3 uid="uid://b1cmx0sqgc6pg"]
 
-[ext_resource type="Script" path="res://scenes/fruits/fruit_base.gd" id="1_qmi6n"]
+[ext_resource type="PackedScene" uid="uid://c8pxyqovdsnuf" path="res://scenes/fruits/fruit_base.tscn" id="1_3ejbb"]
 [ext_resource type="Texture2D" uid="uid://by8qyntj7lhvr" path="res://graphics/fruits/watermelon.png" id="2_2yel7"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0c2e1"]
-radius = 92.0217
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhjwx"]
+radius = 109.632
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ajqre"]
-radius = 93.0054
+[node name="Watermelon" groups=["watermelon"] instance=ExtResource("1_3ejbb")]
 
-[node name="Watermelon" type="RigidBody2D" groups=["watermelon"]]
-script = ExtResource("1_qmi6n")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+visible = false
+shape = SubResource("CircleShape2D_bhjwx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" parent="Node2D" index="0"]
 position = Vector2(0, 2)
-scale = Vector2(0.835938, 0.80029)
+scale = Vector2(1, 0.956)
 texture = ExtResource("2_2yel7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 visible = false
-shape = SubResource("CircleShape2D_0c2e1")
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-visible = false
-shape = SubResource("CircleShape2D_ajqre")
-
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+scale = Vector2(1.04, 1.04)
+shape = SubResource("CircleShape2D_bhjwx")

@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnsu27stqo5xt"]
+
+[ext_resource type="Theme" uid="uid://b6k02yk4mj20q" path="res://themes/main_theme.tres" id="1_61ke4"]
+
+[node name="BasicGameInfo" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -289.0
+offset_top = -238.0
+offset_right = 289.0
+offset_bottom = 238.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -55.0
+offset_top = -44.0
+offset_right = 50.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_61ke4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -31.0
+offset_right = 37.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[u]PATCH NOTES[/u]
+
+Notes regarding all patches for the most recent major release, including notes about that patch itself."
+scroll_active = false

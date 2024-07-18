@@ -1,29 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://cy57jm7wyp8lr"]
+[gd_scene load_steps=3 format=3 uid="uid://c0srtdh48vgh1"]
 
-[ext_resource type="Script" path="res://scenes/fruits/fruit_base.gd" id="1_yb1je"]
+[ext_resource type="PackedScene" uid="uid://c8pxyqovdsnuf" path="res://scenes/fruits/fruit_base.tscn" id="1_g827r"]
 [ext_resource type="Texture2D" uid="uid://rqc4ksc26omp" path="res://graphics/fruits/apple.png" id="2_r622n"]
 
-[node name="Apple" type="RigidBody2D" groups=["apple"]]
-collision_mask = 5
-script = ExtResource("1_yb1je")
+[node name="Apple" groups=["apple"] instance=ExtResource("1_g827r")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -2)
-scale = Vector2(0.539063, 0.539063)
-texture = ExtResource("2_r622n")
-
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-1.96504, 0.930068)
-scale = Vector2(1.18497, 1.18497)
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." index="0"]
+visible = false
+position = Vector2(-1.76235, 0.524669)
+scale = Vector2(1.38767, 1.38767)
 polygon = PackedVector2Array(33, 13, 36, 2, 36, -11, 31, -26, 23, -35, 16, -37, 10.5407, -37, -1, -37, -14, -37, -25, -34, -32, -27, -36, -19, -38, -9, -38, 6, -37, 15, -31, 26, -25, 34, -20, 38, -14, 41, -6, 41, -3, 39, 1, 39, 3, 41, 10, 41, 17, 38, 21, 35, 26, 29, 30, 22)
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+[node name="Sprite2D" parent="Node2D" index="0"]
+position = Vector2(0, -2)
+scale = Vector2(0.609, 0.609)
+texture = ExtResource("2_r622n")
 
-[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="Area2D"]
-position = Vector2(-1.98299, 0.965986)
-scale = Vector2(1.18701, 1.18701)
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="Area2D" index="0"]
+visible = false
+position = Vector2(-1.78562, 0.571255)
+scale = Vector2(1.38438, 1.38437)
 polygon = PackedVector2Array(3, 42, 10, 42, 17, 39, 21, 36, 29, 26, 33, 16, 37, 2, 37, -12, 32, -27, 24, -35, 16, -38, -14, -38, -26, -34, -32, -28, -37, -19, -39, -10, -39, 6, -38, 15, -31, 27, -24, 36, -15, 41, -6, 42, -3, 40, 1, 40)
-
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

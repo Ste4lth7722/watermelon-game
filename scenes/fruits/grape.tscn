@@ -1,24 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://snpxrmci8a4b"]
+[gd_scene load_steps=3 format=3 uid="uid://snpxrmci8a4b"]
 
-[ext_resource type="Texture2D" uid="uid://cd4rci1tflfje" path="res://graphics/fruits/grape.png" id="1_avl1v"]
 [ext_resource type="PackedScene" uid="uid://c8pxyqovdsnuf" path="res://scenes/fruits/fruit_base.tscn" id="1_n0uyn"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_083tv"]
-radius = 17.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_1k2b6"]
-radius = 18.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_h11rd"]
+radius = 19.0
 
 [node name="Grape" groups=["grape"] instance=ExtResource("1_n0uyn")]
 
-[node name="Sprite2D" parent="." index="0"]
-scale = Vector2(0.15625, 0.15625)
-texture = ExtResource("1_avl1v")
-
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 visible = false
-shape = SubResource("CircleShape2D_083tv")
+shape = SubResource("CircleShape2D_h11rd")
 
-[node name="CollisionShape2D2" parent="Area2D" index="0"]
+[node name="Sprite2D" parent="Node2D" index="0"]
+scale = Vector2(0.165, 0.165)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 visible = false
-shape = SubResource("CircleShape2D_1k2b6")
+scale = Vector2(1.04, 1.04)
+shape = SubResource("CircleShape2D_h11rd")

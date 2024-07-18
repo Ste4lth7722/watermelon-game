@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://fuy823y3s8qw"]
+
+[ext_resource type="PackedScene" uid="uid://c8pxyqovdsnuf" path="res://scenes/fruits/fruit_base.tscn" id="1_83ffj"]
+[ext_resource type="Texture2D" uid="uid://4v07cnbbsfjb" path="res://graphics/fruits/mango.png" id="2_iqeo7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xjt1r"]
+radius = 55.9864
+height = 152.466
+
+[node name="Mango" groups=["mango"] instance=ExtResource("1_83ffj")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="0"]
+visible = false
+position = Vector2(3, 1)
+rotation = 1.57079
+scale = Vector2(1.115, 1.115)
+shape = SubResource("CapsuleShape2D_xjt1r")
+
+[node name="Sprite2D" parent="Node2D" index="0"]
+position = Vector2(-2, -10)
+scale = Vector2(0.725, 0.725)
+texture = ExtResource("2_iqeo7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" index="0"]
+visible = false
+position = Vector2(3, 1)
+rotation = 1.57079
+scale = Vector2(1.16, 1.16)
+shape = SubResource("CapsuleShape2D_xjt1r")

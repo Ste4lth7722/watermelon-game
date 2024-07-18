@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://ce6vuu3oqhg7n"]
+[gd_scene load_steps=6 format=3 uid="uid://ce6vuu3oqhg7n"]
 
 [ext_resource type="Script" path="res://scenes/ui/info.gd" id="1_2q2uu"]
 [ext_resource type="Theme" uid="uid://b6k02yk4mj20q" path="res://themes/main_theme.tres" id="2_ahpqp"]
+[ext_resource type="PackedScene" uid="uid://bq0iyctxeg5e5" path="res://scenes/ui/info_pages/basic_info.tscn" id="3_o2vva"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hx734"]
+bg_color = Color(0.160784, 0.160784, 0.160784, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="Theme" id="Theme_opk0t"]
+Panel/styles/panel = SubResource("StyleBoxFlat_hx734")
 
 [node name="Info" type="Control"]
 layout_mode = 3
@@ -19,7 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.294118, 0.27451, 0.286275, 1)
+color = Color(0.298039, 0.278431, 0.235294, 1)
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
@@ -27,14 +38,14 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -31.0
-offset_top = 16.0
+offset_top = 9.0
 offset_right = 31.0
-offset_bottom = 61.0
+offset_bottom = 54.0
 grow_horizontal = 2
 theme = ExtResource("2_ahpqp")
 text = "Info"
 
-[node name="Exit" type="Button" parent="."]
+[node name="ExitButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 19.0
@@ -50,46 +61,94 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -289.0
-offset_top = -216.0
-offset_right = 289.0
-offset_bottom = 264.0
+offset_left = -337.0
+offset_top = -148.0
+offset_right = 337.0
+offset_bottom = 280.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="InfoContainer"]
+[node name="BasicGameInfo" parent="InfoContainer" instance=ExtResource("3_o2vva")]
 layout_mode = 1
 anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="TabBar" type="TabBar" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -369.5
+offset_top = 64.0
+offset_right = 369.5
+offset_bottom = 118.0
 grow_horizontal = 2
-grow_vertical = 2
+focus_mode = 0
 theme = ExtResource("2_ahpqp")
+tab_count = 5
+scrolling_enabled = false
+tab_0/title = "DEVELOPMENT NOTES"
+tab_1/title = "UPDATE LOGS"
+tab_2/title = "Basic Game Info"
+tab_3/title = "Special Fruits"
+tab_4/title = "Special Modes"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="InfoContainer"]
+[node name="Background2" type="Panel" parent="TabBar"]
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 14.0
-offset_top = 9.0
-offset_right = -15.0
-offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
-bbcode_enabled = true
-text = "[u]WATERMELON GAME[/u]
+mouse_filter = 2
+theme = SubResource("Theme_opk0t")
 
-Dropping two fruit of the same type onto each other creates a new fruit of a higher merge level.
-The merge levels are as follows:
-[i]Grape-> Cherry-> Strawberry-> Lemon-> Orange-> Apple-> Pear-> Pineapple-> Cantaloupe-> Watermelon.[/i]
+[node name="TabBar2" type="TabBar" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -369.5
+offset_top = 64.0
+offset_right = 369.5
+offset_bottom = 118.0
+grow_horizontal = 2
+focus_mode = 0
+tab_count = 5
+scrolling_enabled = false
+tab_0/title = "DEVELOPMENT NOTES"
+tab_1/title = "UPDATE LOGS"
+tab_2/title = "Basic Game Info"
+tab_3/title = "Special Fruits"
+tab_4/title = "Special Modes"
 
-If a watermelon is merged, it turns into a grape.
-When you merge a fruit, the score gained is equal to 2 to the power of the merge level.
+[node name="Background2" type="Panel" parent="TabBar2"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_opk0t")
 
-There is a cooldown to dropping fruits that can be seen by the drop indicator at the top. This not only turns opaque, but shows the next fruit to be dropped, allowing for strategies to get the most watermelons.
-
-The fruit picked each drop is usually a grape, but can be a cherry and rarely even a strawberry. Plan where you drop these for the highest score."
-scroll_active = false
-
-[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="button_down" from="ExitButton" to="." method="play_menu_click_click"]
+[connection signal="button_up" from="ExitButton" to="." method="play_menu_click_release"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_pressed"]
+[connection signal="tab_changed" from="TabBar" to="." method="_on_tab_bar_tab_changed"]
+[connection signal="tab_clicked" from="TabBar" to="." method="play_action_click_release"]
+[connection signal="tab_hovered" from="TabBar" to="." method="play_action_click_click"]
+[connection signal="tab_changed" from="TabBar2" to="." method="_on_tab_bar_tab_changed"]
+[connection signal="tab_clicked" from="TabBar2" to="." method="play_action_click_release"]
+[connection signal="tab_hovered" from="TabBar2" to="." method="play_action_click_click"]

@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbn0oe01gp61v"]
+
+[ext_resource type="Script" path="res://ui_elements/quests/quest_bar.gd" id="1_ibfaj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p47e5"]
+bg_color = Color(0.184314, 0.184314, 0.184314, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_75byr"]
+bg_color = Color(0.32549, 0.411765, 0.615686, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 16
+
+[sub_resource type="Theme" id="Theme_7sv2p"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_p47e5")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_75byr")
+
+[node name="QuestBar" type="Control"]
+custom_minimum_size = Vector2(445, 50)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_7sv2p")
+script = ExtResource("1_ibfaj")
+title = "Enter title"
+stat_to_check = "Enter stat"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 45.45
+show_percentage = false
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -11.5
+offset_right = 130.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Enter title"
+
+[node name="Quantity" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -131.0
+offset_top = -11.5
+offset_right = -11.0
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "x/100"
+horizontal_alignment = 2

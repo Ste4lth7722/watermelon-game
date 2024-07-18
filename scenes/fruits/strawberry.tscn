@@ -1,29 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://cksl1tnybkec8"]
+[gd_scene load_steps=3 format=3 uid="uid://d10lhecapym3p"]
 
 [ext_resource type="Texture2D" uid="uid://csqpan76pvl4r" path="res://graphics/fruits/strawberry.png" id="1_0wd16"]
-[ext_resource type="Script" path="res://scenes/fruits/fruit_base.gd" id="1_s8hqj"]
+[ext_resource type="PackedScene" uid="uid://c8pxyqovdsnuf" path="res://scenes/fruits/fruit_base.tscn" id="1_mh6gd"]
 
-[node name="Strawberry" type="RigidBody2D" groups=["strawberry"]]
-collision_mask = 5
-script = ExtResource("1_s8hqj")
+[node name="Strawberry" groups=["strawberry"] instance=ExtResource("1_mh6gd")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, -3)
-scale = Vector2(0.265625, 0.265625)
-texture = ExtResource("1_0wd16")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(0.933113, -6.26425)
-scale = Vector2(0.866228, 0.866228)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
+visible = false
+position = Vector2(0.913188, -6.04508)
+scale = Vector2(0.800151, 0.800151)
 polygon = PackedVector2Array(6, 37, 11.3636, 34.5455, 15, 30, 18, 23, 19, 18, 21, 11, 24, 4, 27, -2, 28, -5, 28, -9, 27, -13, 24, -18, 15, -23, 5, -25, -5, -26, -14, -25, -23, -24, -27, -21, -28, -19, -29, -17, -28, -12, -26, -6, -24, -1, -16, 10, -12, 16, -10, 20, -8, 25, -6, 30, -4, 33, -1, 36, 2, 37)
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+[node name="Sprite2D" parent="Node2D" index="0"]
+position = Vector2(1, -3)
+scale = Vector2(0.248, 0.248)
+texture = ExtResource("1_0wd16")
 
-[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="Area2D"]
-position = Vector2(0.939617, -6.3358)
-scale = Vector2(0.879237, 0.879237)
-polygon = PackedVector2Array(16, 30, 19, 23, 20, 18, 22, 11, 25, 4, 28, -1, 29, -5, 29, -9, 28, -13, 25, -19, 15, -24, -5, -27, -23, -25, -27, -22, -30, -17, -29, -12, -25, -1, -17, 11, -13, 17, -9, 25, -6, 31, -2, 36, 1, 37, 5, 38, 11, 36, 13, 33)
-
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D" index="0"]
+visible = false
+position = Vector2(0.904371, -5.94811)
+scale = Vector2(0.822519, 0.822519)
+polygon = PackedVector2Array(6, 37, 11.3636, 34.5455, 15, 30, 18, 23, 19, 18, 21, 11, 24, 4, 27, -2, 28, -5, 28, -9, 27, -13, 24, -18, 15, -23, 5, -25, -5, -26, -14, -25, -23, -24, -27, -21, -28, -19, -29, -17, -28, -12, -26, -6, -24, -1, -16, 10, -12, 16, -10, 20, -8, 25, -6, 30, -4, 33, -1, 36, 2, 37)

@@ -1,0 +1,99 @@
+[gd_scene load_steps=7 format=3 uid="uid://cv40fbm6jwve3"]
+
+[ext_resource type="Script" path="res://scenes/ui/quests_menu.gd" id="1_rxf60"]
+[ext_resource type="Theme" uid="uid://b6k02yk4mj20q" path="res://themes/main_theme.tres" id="1_ysv7w"]
+[ext_resource type="PackedScene" uid="uid://dbn0oe01gp61v" path="res://ui_elements/quests/quest_bar.tscn" id="2_fg657"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jmk3d"]
+bg_color = Color(0.317647, 0.356863, 0.462745, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="Theme" id="Theme_s8ou2"]
+Panel/styles/panel = SubResource("StyleBoxFlat_jmk3d")
+
+[sub_resource type="Theme" id="Theme_hgnea"]
+
+[node name="Quests" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_s8ou2")
+script = ExtResource("1_rxf60")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25098, 0.301961, 0.380392, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -54.0
+offset_top = 9.0
+offset_right = 54.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme = ExtResource("1_ysv7w")
+text = "Quests"
+
+[node name="MainQuestsHolder" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -250.0
+offset_right = 502.0
+offset_bottom = 290.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainQuestsHolder"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_hgnea")
+
+[node name="QuestBar" parent="MainQuestsHolder/VBoxContainer" instance=ExtResource("2_fg657")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+title = "Merge 350 fruits"
+quantity = 350.0
+stat_to_check = "fruit_merges"
+
+[node name="QuestBar2" parent="MainQuestsHolder/VBoxContainer" instance=ExtResource("2_fg657")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+title = "Merge 500 fruits"
+quantity = 500.0
+stat_to_check = "fruit_merges"
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 19.0
+offset_right = 148.0
+offset_bottom = 63.0
+theme = ExtResource("1_ysv7w")
+text = "Back"
+
+[connection signal="button_down" from="ExitButton" to="." method="play_menu_click_click"]
+[connection signal="button_up" from="ExitButton" to="." method="play_menu_click_release"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_pressed"]
