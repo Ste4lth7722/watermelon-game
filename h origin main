@@ -1,0 +1,30 @@
+[33mcommit 600a0c818b5a2faf0dc4c3e45223dc5da6240dc5[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Sam Hunt <sam@poggle.org>
+Date:   Thu Jul 18 19:03:12 2024 +0100
+
+    Push ALOT of changes
+    
+    I cannot begin to list the amount of changes here. I will definitely
+    be making commits more frequently from now on. This is just silly.
+
+[33mcommit 15b3b193974fa23307c6c1fde61d10e80b6a0ab7[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Sam Hunt <sam@poggle.org>
+Date:   Mon Apr 1 20:41:57 2024 +0100
+
+    alpha2
+    
+    also includes part of alpha 3. just a bit tho. details on codecks.
+
+[33mcommit 2a8f68bea6ccfc8f87eff750b08512976b294db1[m
+Author: Sam Hunt <sam@poggle.org>
+Date:   Sun Mar 31 23:41:51 2024 +0100
+
+    alpha 1, partway to 2.
+    
+    Initial stuff, with progress in rescaling UI to be full screen. This is not a good commit, I just needed to start VC asap.
+
+[33mcommit 0d31487de9b81e6d335b329e174aa54bd0bcb2eb[m
+Author: Sam Hunt <sam@poggle.org>
+Date:   Sun Mar 31 23:38:58 2024 +0100
+
+    Initial commit
